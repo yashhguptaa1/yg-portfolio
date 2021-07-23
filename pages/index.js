@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import GithubIcon from '@material-ui/icons/GitHub';
 import YoutubeIcon from '@material-ui/icons/YouTube';
 
@@ -6,11 +7,14 @@ const HomePage = () => {
   return (
     <HomePageStyled>
             <div className="typography">
-                <h1>Hi, I'm <span>YASH GUPTA</span></h1>
+                <h1>Hi, I am<span>YASH GUPTA</span></h1>
                 <p>
-                    A professional coder
+                   A professional Coder
                 </p>
                 <div className="icons">
+                    <a href="https://codepen.io/pen/" className="icon i-facebook">
+                        <FacebookIcon />
+                    </a>
                     <a href="https://codepen.io/pen/" className="icon i-github">
                         <GithubIcon />
                     </a>
@@ -23,7 +27,7 @@ const HomePage = () => {
   )
 }
 
-const HomePageStyled = styled.header`
+const HomePageStyled = styled.div`
     width: 100%;
     height: 100vh;
     position: relative;
