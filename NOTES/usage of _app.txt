@@ -1,0 +1,31 @@
+_app.js ..............................................................................
+If we have an application with dozens or maybe hundreds of pages so going into all the page components to then wrap layout
+around the content that becomes cumbersome,and that's now where this _app.js file becomes important.
+This is a special file, which exists
+in this Pages folder out of the box
+This special component acts as the root component NextJS will render.
+
+It receives props and uses object de-structuring here
+to pull information out of the props and the information it pulls out there,
+is a component prop and a page prop.
+These props are passed into this MyApp component automatically by NextJS,
+since NextJS is the thing using that specific component.
+and component is a prop that holds the actual page
+contents that should be rendered.
+So it will be different whenever we switch a page and page props are specific props
+our pages might be getting,
+But with that, we now know that component here
+in this _app.js file will in the end
+be the actual page content of our different pages.
+
+we can utilize this _app.js file and simply wrap this component here
+with our layout or with whichever wrapper you have.
+And we then don't have to do it inside of our different page files.
+
+And that means that our different page contents
+will be wrapped with this layout component.
+And hence, if we now save all files
+So whenever you have some component
+or some setting that affects all your pages
+you can utilize this _app.js file to easily add
+that without diving into dozens of files individually.
