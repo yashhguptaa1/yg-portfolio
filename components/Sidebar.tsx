@@ -1,9 +1,10 @@
+import React from 'react'
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
-function Sidebar({navToggle}) {
+const Sidebar: React.FC <{navToggle: boolean}> = (props) => {
     return (
-        <SidebarStyled className={`${navToggle ? 'nav-toggle' : ''}`}>
+        <SidebarStyled className={`${props.navToggle ? 'nav-toggle' : ''}`}>
             <Navigation/>
         </SidebarStyled>
     )
