@@ -8,7 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Switch from "@material-ui/core/Switch";
 
-const index = () => {
+const Index = () => {
   const [theme, setTheme] = useState("dark-theme");
   const [checked, setChecked] = useState(false);
   const [navToggle, setNavToggle] = useState(false);
@@ -57,4 +57,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
