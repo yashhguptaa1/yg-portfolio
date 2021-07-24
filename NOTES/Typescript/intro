@@ -1,0 +1,28 @@
+TypeScript is a so-called "superset" to JavaScript.
+It's a programming language which builds up on JavaScript.
+It extends JavaScript you could say,
+and that is really important.
+The core programming language still, is JavaScript.
+So the base JavaScript syntax you know,
+how you write JavaScript code,
+if statements, for loops, objects, all that does not change.
+But TypeScript then adds more features
+to the JavaScript syntax, and that's also important.
+Unlike React, TypeScript is not a library for JavaScript,
+so it doesn't use JavaScript features
+to build new features on top of them,
+to build functionalities around them.
+But instead it extends the core JavaScript syntax,
+and most importantly, it adds static typing to JavaScript.
+And that's also where the name comes from, TypeScript.
+It adds static typing to JavaScript,
+because JavaScript on its own is actually dynamically typed.
+
+Which means that this function here,
+does not expect any particular types.
+It just knows that it will receive two parameters,
+and that's it.
+So it's not statically typed,
+the types for this function are not announced ahead of time,
+instead it just takes whatever it gets
+and then tries to execute this code.
