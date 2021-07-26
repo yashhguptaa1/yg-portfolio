@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image"
+// import Image from "next/image"
 
 import styled from "styled-components";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -9,9 +9,9 @@ import avatar from "../images/me.jpg";
 function Navigation() {
   return (
     <NavigationStyled>
-      <div className="avatar">
+      {/* <div className="avatar">
         <Image src={avatar} alt="" />
-      </div>
+      </div> */}
       <ul className="nav-items">
         <li className="nav-item">
           <Link href="/home">

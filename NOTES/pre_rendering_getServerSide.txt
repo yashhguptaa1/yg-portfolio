@@ -1,0 +1,74 @@
+So you want to pre-generate the page dynamically on the fly after deployment on the server.
+Not during the build process and not every couple of seconds,
+but for every request. And if that's your goal,
+then there is an alternative to getStaticProps.
+
+A function that can also be async if you want to.
+And that's the getServerSideProps function.
+And the difference to getStaticProps
+is that this function will now not run
+during the build process,
+but instead always on the server after deployment.
+Now you will still return an object here,
+an object with a props property,
+because after all, this function still is
+about getting the props for this page component.
+And you can still then fetch data from an API here,
+or from the file system, whatever you want to do.
+Any code you write in here will always run on the server,
+never in the client.
+So you can run the server side code in here,
+you can also perform operations that use credentials
+that should not be exposed to your users,
+because this code only runs on the server.
+And then ultimately, you return your props object.
+
+This getServerSideProps function runs
+for every incoming requests anyways,
+so there is no need to revalidate every x seconds.
+Ultimately, you then don't return a response
+by working on that response object here,
+but instead, you return this object with the props key,
+which holds the props for this page component function.
+So that is how you then can use getServerSideProps
+for preparing that data for your page.
+
+
+Now, which one of the two should you use?
+Is getServerSideProps better or getStaticProps?
+getServerSideProps might sound better
+because it's guaranteed to run for every request.
+But that actually can be a disadvantage,
+because that means that you need to wait for your page
+to be generated on every incoming request.
+Now if you don't have data that changes all the time,
+and with that, I really mean
+that it changes multiple times every second.
+And if you don't need access to the request object,
+let's say for authentication,
+getStaticProps is actually better.
+Because there you pre-generate an HTML file,
+that file can then be stored and served by a CDN.
+And that simply is faster than regenerating
+and fetching that data for every incoming request.
+So your page will be faster when working
+with getStaticProps, because then it can be cached
+and reused, instead of regenerated all the time.
+Hence, you should really only use getServerSideProps
+if you need access to that concrete request object,
+because you don't have access to request
+and response in getStaticProps.
+Or if you really have data
+that changes multiple times every second,
+then therefore even revalidate won't help you,
+then getServerSideProps is a great choice.
+Now here for our meetup list, though,
+it's not a great choice, because that is not data,
+which changes frequently.
+And here I also don't need to work
+with the incoming request.
+And therefore I will comment getServerSideprops out again,
+and comment getStaticProps in.
+Because with that, we can take advantage of the caching
+and we're not regenerating the page multiple times,
+unnecessarily.

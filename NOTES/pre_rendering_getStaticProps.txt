@@ -1,0 +1,111 @@
+VIDEO from UDEMY
+:332
+:333
+:334
+
+NextJS has this built-in page pre-rendering but this built-in process has a flaw
+the page that is pre-rendered has basically the snapshot after the first component render cycle as its content
+and that might be missing crucial data. So if we visit some route,
+if some request is sent to some route to this page then,
+there we return that pre-rendered page but we might be missing data here.
+
+But after this HTML page was received, React will actually take over,
+the page is hydrated as this process is called, which means that now React will turn this
+into a single page application and take over control and then this useEffect function might be executed,
+data might be fetched and the page might be updated in the browser, not on the server,
+not on the pre-rendered page but instead, after this page was received in the browser.
+
+But if we wanna pre-render a page with data so that this initially returned HTML code
+already contains the data, we need to fine tune this built-it pre-rendering process
+and we need to configure it. 
+
+And for this, NextJS gives us two forms of pre-rendering,
+which we can use for controlling how the pages should be rendered.
+It has something which is called Static Generation 
+and it has an alternative,
+which is called Server-side Rendering.And the two might sound similar
+but they run or the code runs at different points of time
+
+When using Static Generation, a page component is pre-rendered
+when you build your application, when you build the next project.
+So when you build it for production. 
+With Static Generation, by default, your page is not pre-rendered
+on the fly on the server when a request reaches the server
+but instead, it is pre-rendered when you as a developer build your site for production.
+And that means that after it was deployed, that pre-rendered page does not change.
+
+At least not by default.If you then updated the data
+and you know that the pre-rendered page needs to change,
+you need to start that build process again
+and redeploy again.
+
+NextJS prepares your pages.It by default generates your pages already statically
+and it by default does that during the build process but if you need to wait for data,
+if you need to add data fetching to a page component,you can do so by exporting a special function
+from inside your page component file.
+
+In there, you can export a function, a function called getStaticProps
+NextJS will look for a function with that name and if it finds it, it executes this function
+during this pre-rendering process.
+
+So it will then not directly call your component function
+and use the returned JSX snapshot as HTML content
+but it will, first of all, call getStaticProps
+before it calls the component function.
+And getStaticProps has this name because indeed, its job is to prepare props for this page.
+And these props could then contain the data this page needs.
+And that's useful because getStaticProps
+is allowed to be asynchronous.You can return a promise there
+and then, and that's the key thing, NextJS will wait for this promise to resolve,
+which means it waits until your data is loaded
+and then you return the props for this component function.
+And with that, you're able to load data before this component function is executed
+so that this component can be rendered with the required data.
+
+Now, here in getStaticProps, you can also execute any code
+that would normally only run on a server. You could access a file system here
+or securely connect to a database because any code you write in here
+will never end up on the client side and it will never execute on the client side
+simply because this code is executed during the build process,
+not on the server and especially not on the clients of your visitors.
+So the code in here will never reach the machines
+of your visitors. It will never execute on their machines.
+But then once you're done with whatever you did to get the data you need,
+you need to return an object here in getStaticProps.
+
+Now, in this object, you can configure various things
+but most importantly, you typically set a props property here
+and it has to be named props. And that then holds another object,
+which will be the props object you receive in your component function here
+in this page component function. This now receives a props object
+and the object will be the object you set as props here in getStaticProps.
+
+we no longer need useEffect and we can therefore get rid of those imports here
+because now we get the data through props.
+
+we could be facing when using getStaticProps. And one pretty big problem,
+which we could face in some websites, depending on what we're doing
+is that the data here could be outdated. This page, as I mentioned, is generated
+during the build process. So thereafter, we deploy it.
+If we then add more meetups to our database, this pre-generated page would not know about them.
+And if we don't add any client-side data fetching, we would always just see the outdated meetups here.
+And this could, of course, be a problem. Now, we can always rebuild our site
+and redeploy when our data changes. And for some websites, like personal blogs,
+this is a great alternative because there data doesn't change too frequently
+but if data does change more frequently, there is a extra property,
+which we can add to this returned object.
+
+And that's the revalidate property. When we add this property to the object returned
+by getStaticProps, we unlock a feature called incremental Static Generation.
+Revalidate wants a number, let's say 10, and this number is the number
+of seconds NextJS will wait until it regenerates this page
+for an incoming request. That means that with revalidate set to some number,
+this page will not just be generated during the build process.
+It will be generated there but not just but it will also be generated every couple of seconds
+on the server, at least if there are requests for this page.
+So that means that this page, with revalidate set to 10, would be regenerated on the server
+at least every 10 seconds if there are requests coming in for this page.
+And then these regenerated pages would replace the old pre-generated pages.
+And with that, you would ensure that your data is never older than 10 seconds.
+And therefore, the number of seconds you wanna use here depends
+on your data update frequency.

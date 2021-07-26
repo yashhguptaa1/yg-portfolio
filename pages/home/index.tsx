@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GithubIcon from '@material-ui/icons/GitHub';
-import YoutubeIcon from '@material-ui/icons/YouTube';
+import CodeIcon from '@material-ui/icons/Code';
 
 const HomePage = () => {
   return (
@@ -12,14 +12,14 @@ const HomePage = () => {
                    A professional Coder
                 </p>
                 <div className="icons">
-                    <a href="https://codepen.io/pen/" className="icon i-facebook">
-                        <FacebookIcon />
+                    <a href="https://www.linkedin.com/in/yashhguptaa/" className="icon i-linkedin">
+                        <LinkedInIcon />
                     </a>
-                    <a href="https://codepen.io/pen/" className="icon i-github">
+                    <a href="https://github.com/yashhguptaa1" className="icon i-github">
                         <GithubIcon />
                     </a>
-                    <a href="https://codepen.io/pen/" className="icon i-youtube">
-                        <YoutubeIcon />
+                    <a href="https://leetcode.com/yashhguptaa1/" className="icon i-leetcode">
+                        <CodeIcon />
                     </a>
                 </div>
             </div>
@@ -64,10 +64,17 @@ const HomePageStyled = styled.header`
                 }
             }
 
-            .i-youtube{
+            .i-linkedin{
                 &:hover{
-                    border: 2px solid red;
-                    color: red;
+                    border: 2px solid blue;
+                    color: blue;
+                }
+            }
+
+            .i-leetcode{
+                &:hover{
+                    border: 2px solid yellow;
+                    color: yellow;
                 }
             }
             .i-github{
