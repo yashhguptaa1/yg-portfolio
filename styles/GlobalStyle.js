@@ -159,11 +159,24 @@ h6{
       }
     }
 
-    .nav-toggle{
+    /* .nav-toggle{
         display: none;
         //transform: translateX(0);
         z-index: 20;
+    } */
+
+    .nav-show {
+    @media screen and (max-width: 1200px) {
+      transform: translateX(-100%);
+      //display: block;
+      z-index: 20;
     }
+  }
+  .nav-hide {
+    //display: none;
+    transform: translateX(0);
+    z-index: 20;
+  }
   @media screen and (max-width:1200px){
     .ham-burger-menu{
         display: block;
