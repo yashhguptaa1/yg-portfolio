@@ -4,11 +4,12 @@ import AuthorIntro from "../components/AuthorIntro";
 import CardItem from "../components/CardItem";
 import CardListItem from "../components/CardListItem";
 
-export default function Home() {
+function Home(props) {
   return (
     <PageLayout>
       <AuthorIntro />
       <hr />
+      {props.message}
       <Row className="mb-5">
         <Col md="10">
           <CardListItem />
@@ -20,3 +21,16 @@ export default function Home() {
     </PageLayout>
   );
 }
+
+// This function is called during the build (build time)
+// Provides props to your page
+// It will create static page
+export async function getStaticProps() {
+  return {
+    props: {
+      message: 'Hello world'
+    }
+  }
+}
+
+export default Home;
