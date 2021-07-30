@@ -1,11 +1,12 @@
 import { Card } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 const CardItem = () => {
   return (
     <Card className={`fj-card`}>
       <div className="card-body-wrapper">
         <Card.Header className="d-flex flex-row">
-          <img
+          <Image
             src={"https://via.placeholder.com/150"}
             className="rounded-circle mr-3"
             height="50px"
