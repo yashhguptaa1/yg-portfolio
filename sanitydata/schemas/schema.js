@@ -19,20 +19,23 @@ export default createSchema({
       fields: [
         {
           name: "title",
-          type: "document",
+          type: "string",
           title: "Title",
-          fields: [
-            {
-              name: "subtitle",
-              type: "string",
-              title: "Test",
-            },
-          ],
         },
         {
           name: "subtitle",
           type: "string",
           title: "Subtitle",
+        },
+        {
+          name: "coverImage",
+          title: "Cover Image",
+          type: "image",
+        },
+        {
+          name: "date",
+          title: "Date",
+          type: "datetime",
         },
         {
           name: "slug",
