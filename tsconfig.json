@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/_app.js", "components/Sidebar.tsx"  ],
+, "pages/_app.js", "components/Sidebar.tsx", "pages/blogs/dsa/backtracking/place-unplace/index.jsx", "pages/index.js"  ],
   "exclude": [
     "node_modules"
   ]

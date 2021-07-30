@@ -1,12 +1,8 @@
-import GlobalStyle from "../styles/GlobalStyle";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/index.scss' ;
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
