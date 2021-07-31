@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import Link from "next/link";
+import { urlFor } from "../lib/api";
 
 const CardItem = ({ title, subtitle, image, date, author, link }) => {
   return (
@@ -22,7 +23,10 @@ const CardItem = ({ title, subtitle, image, date, author, link }) => {
           </div>
         </Card.Header>
         <div className="view overlay">
-          <Card.Img src={image} alt="Card image cap" />
+          <Card.Img
+            src={urlFor(image).height(300).crop("center").fit("clip").url()}
+            alt="Card image cap"
+          />
         </div>
         <Card.Body>
           <Card.Title className="card-main-title">{title}</Card.Title>
@@ -39,12 +43,3 @@ const CardItem = ({ title, subtitle, image, date, author, link }) => {
 };
 
 export default CardItem;
-
-/*
-Link accepts the following props:
-
-href - The path or URL to navigate to. This is the only required prop
-
-as - Optional decorator for the path that will be shown in the browser URL bar.
-Before Next.js 9.5.3 this was used for dynamic routes, check our previous docs to see how it worked
-*/
