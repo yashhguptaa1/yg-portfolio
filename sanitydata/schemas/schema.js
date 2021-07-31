@@ -51,13 +51,50 @@ export default createSchema({
           name: "coverImage",
           title: "Cover Image",
           type: "image",
+          fields: [
+            {
+              type: "text",
+              name: "alt",
+              title: "Description",
+            },
+          ],
+        },
+        {
+          name: "content",
+          title: "Content",
+          type: "array",
+          of: [
+            {
+              type: "block",
+            },
+            {
+              type: "image",
+              fields: [
+                {
+                  type: "text",
+                  name: "alt",
+                  title: "Description",
+                  options: {
+                    isHighlighted: true,
+                  },
+                },
+              ],
+              options: {
+                hotspot: true, //option to edit image to be given
+              },
+            },
+            {
+              type: "code",
+              options: {
+                withFilename: true,
+              },
+            },
+          ],
         },
         {
           name: "date",
           title: "Date",
           type: "datetime",
-          validation: (Rule) =>
-            Rule.required().error("Date of revision should be provided"),
         },
         //referencing dataset 1 in dataset 2
         {
@@ -65,14 +102,11 @@ export default createSchema({
           title: "Author",
           type: "reference",
           to: [{ type: "author" }],
-          validation: (Rule) => Rule.required(),
         },
         {
           name: "slug",
           type: "slug",
           title: "Slug",
-          validation: (Rule) =>
-            Rule.required().warning("Slug is provided to customize blog url"),
         },
       ],
     },
