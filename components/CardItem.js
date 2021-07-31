@@ -1,13 +1,13 @@
 import { Card } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 
-const CardItem = ({ title, subtitle, image, date }) => {
+const CardItem = ({ title, subtitle, image, date, author }) => {
   return (
     <Card className={`fj-card`}>
       <div className="card-body-wrapper">
         <Card.Header className="d-flex flex-row">
           <Image
-            src="https://via.placeholder.com/250"
+            src={author?.avatar || "https://via.placeholder.com/150"}
             className="rounded-circle mr-3"
             height="50px"
             width="50px"
@@ -15,7 +15,7 @@ const CardItem = ({ title, subtitle, image, date }) => {
           />
           <div>
             <Card.Title className="font-weight-bold mb-1">
-              Placeholder Author
+              {author?.name}
             </Card.Title>
             <Card.Text className="card-date">{date}</Card.Text>
           </div>

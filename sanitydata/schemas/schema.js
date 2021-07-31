@@ -12,6 +12,26 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+
+    //dataset 1 : to store authors
+    {
+      name: 'author',
+      type: 'document',
+      title: 'Author',
+      fields: [
+        {
+          name: 'name',
+          title: 'Name',
+          type: 'string'
+        },
+        {
+          name: 'avatar',
+          title: 'Avatar',
+          type: 'image'
+        }
+      ]
+    },
+    //dataset 2 :  to store blogs
     {
       name: "blog",
       type: "document",
@@ -36,6 +56,13 @@ export default createSchema({
           name: "date",
           title: "Date",
           type: "datetime",
+        },
+        //referencing dataset 1 in dataset 2
+        {
+          name: 'author',
+          title: 'Author',
+          type: 'reference',
+          to: [{type: 'author'}]
         },
         {
           name: "slug",
