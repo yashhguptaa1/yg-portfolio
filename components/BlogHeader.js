@@ -1,3 +1,5 @@
+import { Image } from "react-bootstrap";
+
 export default function BlogHeader({
   title,
   subtitle,
@@ -8,7 +10,7 @@ export default function BlogHeader({
   return (
     <div className="blog-detail-header">
       <p className="lead mb-0">
-        <img
+        <Image
           src={author?.avatar}
           className="rounded-circle mr-3"
           height="50px"
@@ -23,7 +25,7 @@ export default function BlogHeader({
       </h1>
       <h2 className="blog-detail-header-subtitle mb-3">{subtitle}</h2>
       {/* Check if contains cover image */}
-      <img
+      <Image
         className="img-fluid rounded"
         src={coverImage}
         alt="TODO: provide alt"
