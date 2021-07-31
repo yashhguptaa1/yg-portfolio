@@ -3,13 +3,14 @@
 
 import PageLayout from "../../components/PageLayout";
 import BlogHeader from "../../components/BlogHeader";
+import BlogContent from "../../components/BlogContent";
 import { getBlogBySlug, getAllBlogs } from "../../lib/api";
 
 import { Row, Col } from "react-bootstrap";
 
 const BlogDetail = ({ blog }) => {
   //console.log(blog);
-
+  debugger
   return (
     <PageLayout className="blog-detail-page">
       <Row>
@@ -22,7 +23,7 @@ const BlogDetail = ({ blog }) => {
             date={blog.date}
           />
           <hr />
-          {/* Blog Content Here */}
+          <BlogContent content={blog.content} />
         </Col>
       </Row>
     </PageLayout>
