@@ -1,3 +1,5 @@
+//domain : http://localhost:3000/blogs/
+
 const index = () => {
     return (
         <div>

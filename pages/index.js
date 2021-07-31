@@ -27,6 +27,11 @@ function Home({ blogs }) {
               subtitle={blog.subtitle}
               date={blog.date}
               image={blog.coverImage}
+              slug={blog.slug}
+              link={{
+                href: "/blogs/[slug]",//file path
+                as: `/blogs/${blog.slug}`,//to be displayed url
+              }}
             />
           </Col>
         ))}

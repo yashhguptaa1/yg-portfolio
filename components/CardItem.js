@@ -1,7 +1,8 @@
 import { Card } from "react-bootstrap";
 import { Image } from "react-bootstrap";
+import Link from "next/link";
 
-const CardItem = ({ title, subtitle, image, date, author }) => {
+const CardItem = ({ title, subtitle, image, date, author, link }) => {
   return (
     <Card className={`fj-card`}>
       <div className="card-body-wrapper">
@@ -28,9 +29,22 @@ const CardItem = ({ title, subtitle, image, date, author }) => {
           <Card.Text>{subtitle}</Card.Text>
         </Card.Body>
       </div>
-      <a className="card-button">Read More</a>
+      {link && (
+        <Link {...link}>
+          <a className="card-button">Read More</a>
+        </Link>
+      )}
     </Card>
   );
 };
 
 export default CardItem;
+
+/*
+Link accepts the following props:
+
+href - The path or URL to navigate to. This is the only required prop
+
+as - Optional decorator for the path that will be shown in the browser URL bar.
+Before Next.js 9.5.3 this was used for dynamic routes, check our previous docs to see how it worked
+*/

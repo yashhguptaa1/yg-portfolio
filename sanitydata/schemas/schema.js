@@ -15,21 +15,21 @@ export default createSchema({
 
     //dataset 1 : to store authors
     {
-      name: 'author',
-      type: 'document',
-      title: 'Author',
+      name: "author",
+      type: "document",
+      title: "Author",
       fields: [
         {
-          name: 'name',
-          title: 'Name',
-          type: 'string'
+          name: "name",
+          title: "Name",
+          type: "string",
         },
         {
-          name: 'avatar',
-          title: 'Avatar',
-          type: 'image'
-        }
-      ]
+          name: "avatar",
+          title: "Avatar",
+          type: "image",
+        },
+      ],
     },
     //dataset 2 :  to store blogs
     {
@@ -56,18 +56,23 @@ export default createSchema({
           name: "date",
           title: "Date",
           type: "datetime",
+          validation: (Rule) =>
+            Rule.required().error("Date of revision should be provided"),
         },
         //referencing dataset 1 in dataset 2
         {
-          name: 'author',
-          title: 'Author',
-          type: 'reference',
-          to: [{type: 'author'}]
+          name: "author",
+          title: "Author",
+          type: "reference",
+          to: [{ type: "author" }],
+          validation: (Rule) => Rule.required(),
         },
         {
           name: "slug",
           type: "slug",
           title: "Slug",
+          validation: (Rule) =>
+            Rule.required().warning("Slug is provided to customize blog url"),
         },
       ],
     },
