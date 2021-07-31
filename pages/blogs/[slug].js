@@ -2,45 +2,40 @@
 //ex : http://localhost:3000/blogs/first-blog
 
 import PageLayout from "../../components/PageLayout";
-import { useRouter } from "next/router";
+import { getBlogBySlug } from "../../lib/api";
 
-const BlogDetail = () => {
-  
-    const { query } = useRouter();
+const BlogDetail = ({ blog }) => {
+
+  console.log(blog);
 
   return (
     <PageLayout>
-      <h1>Hello Detail Page - {query?.slug}</h1>
+      <h1>Hello Detail Page - {blog?.slug}</h1>
     </PageLayout>
   );
 };
 
+export async function getServerSideProps({ params }) {
+  const blog = await getBlogBySlug(params.slug);
+  return {
+    props: { blog },
+  };
+}
+
 export default BlogDetail;
-
 /*
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+The context parameter is an object containing the following keys:
 
-const router = useRouter();
-  debugger;
-  
+params: If this page uses a dynamic route, params contains the route parameters. 
+If the page name is [id].js , then params will look like { id: ... }. To learn more,
+take a look at the Dynamic Routing documentation.
 
-router:
-    asPath: "/blogs/first-blog"
-    back: ƒ ()
-    basePath: ""
-    beforePopState: ƒ ()
-    components: {/blogs/[slug]: {…}, /_app: {…}}
-    defaultLocale: undefined
-    domainLocales: undefined
-    events: {on: ƒ, off: ƒ, emit: ƒ}
-    isFallback: false
-    isLocaleDomain: false
-    isPreview: false
-    isReady: true
-    locale: undefined
-    locales: undefined
-    pathname: "/blogs/[slug]"
-    prefetch: ƒ ()
-    push: ƒ ()
-    query:
-        slug: "first-blog"
+getServerSideProps should return an object with:
+  props - An optional object with the props that will be received by the page component.
+  It should be a serializable object
 */

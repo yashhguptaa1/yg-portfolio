@@ -29,8 +29,8 @@ function Home({ blogs }) {
               image={blog.coverImage}
               slug={blog.slug}
               link={{
-                href: "/blogs/[slug]",//file path
-                as: `/blogs/${blog.slug}`,//to be displayed url
+                href: "/blogs/[slug]", //file path
+                as: `/blogs/${blog.slug}`, //to be displayed url
               }}
             />
           </Col>
@@ -44,7 +44,6 @@ function Home({ blogs }) {
 // Provides props to your page
 // It will create static page
 export async function getStaticProps() {
-  console.log("Calling getStaticProps");
   const blogs = await getAllBlogs();
   return {
     props: {
