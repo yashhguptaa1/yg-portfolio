@@ -5,10 +5,10 @@ import { findDOMNode } from 'react-dom';
 const HighlightCode = ({children, language}) => {
   const code = createRef();
 
-  useEffect(() => {
-    debugger
-    highlight.highlightBlock(findDOMNode(code.current));
-  }, [])
+  // useEffect(() => {
+  //   debugger
+  //   highlight.highlightBlock(findDOMNode(code.current));
+  // }, [])
 
   return (
     <pre>

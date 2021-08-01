@@ -3,7 +3,7 @@
 
 import PageLayout from "../../components/PageLayout";
 import BlogHeader from "../../components/BlogHeader";
-import BlogContent from "../../components/BlogContent";
+// import BlogContent from "../../components/BlogContent";
 import { getBlogBySlug, getAllBlogs } from "../../lib/api";
 import { urlFor } from "../../lib/api";
 
@@ -24,7 +24,7 @@ const BlogDetail = ({ blog }) => {
             date={blog.date}
           />
           <hr />
-          <BlogContent content={blog.content} />
+          {/* <BlogContent content={blog.content} /> */}
         </Col>
       </Row>
     </PageLayout>
