@@ -12,22 +12,25 @@ import { getAllBlogs } from "../lib/api";
 function Home({ blogs }) {
   //changing view between card and list
   const [filter, setFilter] = useState({
-    view: { list: 1 },
+    view: { list: 0 },
   });
 
   return (
     <PageLayout>
       <AuthorIntro />
       <FilteringMenu
-        onChange={() => {
-          alert("Alert from index");
+        filter={filter}
+        onChange={(option, value) => {
+          // debugger;  option = "view", value = {list: 1}
+
+          setFilter({ ...filter, [option]: value });
         }}
       />
       <hr />
       <Row className="mb-5">
         {blogs.map((blog) =>
           filter.view.list === 1 ? (
-            <Col md="9">
+            <Col key={`${blog.slug}-list`} md="9">
               <CardListItem />
             </Col>
           ) : (
